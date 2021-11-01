@@ -11,23 +11,21 @@ public class Main {
                         "Back to the future I, 1985", 01, 48, 8, 640, 352)
         };
 
-        /*2
-            В данном блоке я нашел максимальную длину имени и размера, но не понимаю как передать этот размер
-            в printf (%20d). Так как в этой задаче таблица не главное, то подумаю потом.
-         */
-        int maxLengthName=0;
-        int maxLengthSize=0;
-        for (Files f:files) {
-            int curLengthName = f.getNameLength();
-            int curLengthSize = new Integer(f.getSizeLength());
 
-            if (curLengthName > maxLengthName)
-                maxLengthName = curLengthName;
 
-            if (curLengthSize > maxLengthSize)
-                maxLengthSize = curLengthSize;
-        }
+        Files.printAll(files);
 
-        Files.printAll(files, maxLengthName, maxLengthSize);
+        // Создайте массив на базе одного из дочерних типов и заполните его несколькими объектами
+        // Так как MultimediaFile наследуется от Files, то ему доступен метод printAll. Поэтому он способен распечатать
+        // любой массив на базе дочерего.
+        MultimediaFile[] mf = {
+                new AudioFile("06-PrettyGirl.mp3",  7893454, FileFormats.AUDIO, "Eric Clapton, Pretty Girl", 05, 28),
+                new VideoFile("BackToTheFuture1.avi", 1470984192, FileFormats.VIDEO,
+                        "Back to the future I, 1985", 01, 48, 8, 640, 352)
+        };
+
+        System.out.println("\n\nМассив на базе дочернего списка.\n");
+        MultimediaFile.printAll(mf);
+
     }
 }

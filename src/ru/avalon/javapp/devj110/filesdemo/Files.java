@@ -5,20 +5,11 @@ public abstract class Files {
     private String name;
     private int size;
     private FileFormats fileFormat;
-    private Duration duration;
 
     public Files(String name, int size, FileFormats fileFormat) {
         setName(name);
         setSize(size);
         setFileFormat(fileFormat);
-    }
-
-    public Duration getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Duration duration) {
-        this.duration = duration;
     }
 
     public String getName() {
@@ -39,8 +30,8 @@ public abstract class Files {
         return name.length();
     }
 
-    public String getSizeLength() {
-        return Integer.toString(size);
+    public int  getSizeLength() {
+        return Integer.toString(size).length();
     }
 
     public void setSize(int size) {
@@ -61,17 +52,39 @@ public abstract class Files {
 
     public abstract String getDetailInfo();
 
-    public void print(int firstNum, int secondNum) {
+
+    public void print(int maxLengthName, int maxLengthSize) {
+
         //System.out.print(name + "| " + size + "| " + fileFormat + ", ");
-        System.out.printf("%-20s|%10d|%s, ", name,  size, fileFormat);
+        String fmt = String.format("%%-%ds|%%%dd|%%s", maxLengthName, maxLengthSize);
+        //String fmt1 = "%-" + firstNum + "s|%" + secondNum + "d|%s";
+        //System.out.println(fmt);
+        System.out.printf(fmt, name, size, fileFormat);
+        //System.out.printf(fmt1, name, size, fileFormat);
+        //System.out.println("maxN=" + maxLengthName +  "maxS=" + maxLengthSize);
+        //System.out.printf("%-20s|%10d|%s, ", name,  size, fileFormat);
         System.out.print(getDetailInfo());
     }
 
-    public static void printAll(Files[] files,int firstNum, int secondNum) {
+    public static void printAll(Files[] files) {
         System.out.println("    File name       |    Size  |   Details");
         System.out.println("--------------------------------------------");
+
+        int maxLengthName=0;
+        int maxLengthSize=0;
         for (Files f : files) {
-            f.print(firstNum, secondNum);
+            int curLengthName = f.getNameLength();
+            int curLengthSize = f.getSizeLength();
+
+            if (curLengthName > maxLengthName)
+                maxLengthName = curLengthName;
+
+            if (curLengthSize > maxLengthSize)
+                maxLengthSize = curLengthSize;
+        }
+
+        for (Files f : files) {
+            f.print(maxLengthName, maxLengthSize);
             System.out.println();
         }
     }

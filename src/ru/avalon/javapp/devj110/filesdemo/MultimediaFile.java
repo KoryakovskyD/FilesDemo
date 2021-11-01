@@ -2,6 +2,7 @@ package ru.avalon.javapp.devj110.filesdemo;
 
 public class MultimediaFile extends Files{
     private String contentName;
+    private Duration duration;
 
     public MultimediaFile(String name, int size, FileFormats fileFormat, String contentName, int minutes, int seconds) {
         super(name, size, fileFormat);
@@ -13,6 +14,14 @@ public class MultimediaFile extends Files{
         super(name, size, fileFormat);
         setContentName(contentName);
         setDuration(new Duration(hours, minutes, seconds));
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 
     public String getContentName() {

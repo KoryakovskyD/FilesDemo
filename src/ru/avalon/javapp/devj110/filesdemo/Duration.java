@@ -5,15 +5,14 @@ public class Duration {
     private int minutes;
     private int seconds;
 
-    public Duration(int hours, int minutes, int seconds) {
-        setHours(hours);
+    public Duration(int minutes, int seconds) {
         setMinutes(minutes);
         setSeconds(seconds);
     }
 
-    public Duration(int minutes, int seconds) {
-        setMinutes(minutes);
-        setSeconds(seconds);
+    public Duration(int hours, int minutes, int seconds) {
+        this(minutes,seconds);
+        setHours(hours);
     }
 
     public int getHours() {
