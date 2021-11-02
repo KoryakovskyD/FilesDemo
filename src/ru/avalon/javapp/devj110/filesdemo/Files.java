@@ -56,7 +56,7 @@ public abstract class Files {
     public void print(int maxLengthName, int maxLengthSize) {
 
         //System.out.print(name + "| " + size + "| " + fileFormat + ", ");
-        String fmt = String.format("%%-%ds|%%%dd|%%s", maxLengthName, maxLengthSize);
+        String fmt = String.format("%%-%ds|%%%dd|%%s, ", maxLengthName, maxLengthSize);
         //String fmt1 = "%-" + firstNum + "s|%" + secondNum + "d|%s";
         //System.out.println(fmt);
         System.out.printf(fmt, name, size, fileFormat);

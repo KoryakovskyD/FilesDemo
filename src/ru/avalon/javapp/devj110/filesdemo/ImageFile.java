@@ -8,6 +8,16 @@ public class ImageFile extends Files{
         imageDimension = new Dimension(wight, height);
     }
 
+    public Dimension getImageDimension() {
+        return imageDimension;
+    }
+
+    public void setImageDimension(Dimension imageDimension) {
+        if (imageDimension == null)
+            throw new IllegalArgumentException("imageDimension can't be null");
+        this.imageDimension = imageDimension;
+    }
+
     @Override
     public String getDetailInfo() {
         return imageDimension.getDimensionString();

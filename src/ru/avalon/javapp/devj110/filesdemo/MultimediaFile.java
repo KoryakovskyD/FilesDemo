@@ -21,6 +21,8 @@ public class MultimediaFile extends Files{
     }
 
     public void setDuration(Duration duration) {
+        if (duration == null)
+            throw new IllegalArgumentException("duration can't be null");
         this.duration = duration;
     }
 
@@ -32,6 +34,10 @@ public class MultimediaFile extends Files{
         if (contentName == null)
             throw new IllegalArgumentException("contentName can't be null.");
         this.contentName = contentName;
+    }
+
+    public String getGeneralPrint() {
+        return getContentName() + ", " + getDuration().getDurationString();
     }
 
     @Override
