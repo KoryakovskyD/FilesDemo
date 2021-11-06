@@ -1,6 +1,6 @@
 package ru.avalon.javapp.devj110.filesdemo;
 
-public class MultimediaFile extends Files{
+public abstract class MultimediaFile extends Files{
     private String contentName;
     private Duration duration;
 
@@ -38,10 +38,5 @@ public class MultimediaFile extends Files{
 
     public String getGeneralPrint() {
         return getContentName() + ", " + getDuration().getDurationString();
-    }
-
-    @Override
-    public String getDetailInfo() {
-        return "";
     }
 }
